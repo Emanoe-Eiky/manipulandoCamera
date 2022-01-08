@@ -4,6 +4,7 @@ import { Camera } from 'expo-camera';
 import {FontAwesome} from '@expo/vector-icons';
 import * as Permissions from 'expo-permissions';
 import * as MediaLibrary from 'expo-media-library';
+import { backgroundColor, color } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 
 export default function App() {
   const camRef = useRef(null)
@@ -63,8 +64,10 @@ export default function App() {
           <TouchableOpacity
           style={{
               position: 'absolute',
-              bottom: 20,
-              left: 20
+              top: '88%',
+              bottom: 30,
+              left: '79%',
+              
             }}
             onPress={ () => {
               setType(
@@ -74,14 +77,21 @@ export default function App() {
               );
             }}
           >
-            <Text style={{fontSize: 20, marginBottom: 13, color: '#fff'}}>Trocar</Text>
-          </TouchableOpacity>
+            <FontAwesome name='camera' size={40} color='#FFF'/>
+          </TouchableOpacity >
         </View>
+      
+        
+        <TouchableOpacity size={70} onPress={takePicture} >
+          <FontAwesome name='circle' size={70} color='#fff'  style={styles.icon} />
+        </TouchableOpacity>
+
       </Camera>
 
-      <TouchableOpacity style={styles.button} onPress={takePicture}>
-          <FontAwesome name='camera' size={24} color='#FFF'/>
-      </TouchableOpacity>
+
+      {/* <TouchableOpacity style={styles.button}  onPress={takePicture}>
+          <FontAwesome  name='circle' size={70} color='#fff'/>
+      </TouchableOpacity> */}
 
       { capturedPhoto &&
         <Modal 
@@ -119,12 +129,21 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
   },
+  icon: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: '40%',
+    marginRight: '43%',
+    borderRadius: 50
+    
+     
+    
+  },
   button: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#121212',
-    margin: 20,
-    borderRadius: 10,
-    height: 50,
+    backgroundColor: '#fff',
+    
+    
   }
 });
